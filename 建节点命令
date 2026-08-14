@@ -1,3 +1,24 @@
-
-谷歌云一键搭建v2节点命令
+一键搭建命令：  1-v2ray   
 bash <(wget -qO- -o- https://git.io/v2ray.sh)
+
+ 2-MtProto
+bash <(curl -Ls https://cdn.jsdelivr.net/gh/missuo/MTProxy/mtproxy.sh)
+删除、新建、进入：
+rm -rf /home/mtproxy && mkdir /home/mtproxy && cd /home/mtproxy
+
+vision脚本安装
+--更新系统并安装 wget 工具
+apt update && apt upgrade && apt install wget -y
+--复制下面三个命令运行，一次一行。前两个运行不会有提示，这种没报错也没提示基本都算好结果
+echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
+sysctl -p
+--放行 443 端口
+iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+--一键脚本安装
+wget --no-check-certificate -O ${HOME}/Xray-script.sh https://raw.githubusercontent.com/zxcvos/Xray-script/main/install.sh && bash ${HOME}/Xray-script.sh
+
+meitian
+meitian2
+json一般是搭配有负载均衡的多个节点集合
+yaml是clash使用的节点
